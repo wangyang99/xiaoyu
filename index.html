@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xl&&xy</title>
+    <style>
+        div{
+            width:300px;
+            height:100px;
+            margin:50px auto;
+            border:1px solid red;
+            border-radius:20px;
+            line-height:100px;
+            text-align:center;
+            font-size:30px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<script>
+    var oDiv1=document.getElementsByTagName('div')[0];
+    var oDiv2=document.getElementsByTagName('div')[1];
+    function toDou(n){
+        return n>=0 && n<10?'0'+n:''+n;
+    }
+    countDown(oDiv1,'2016/10/19 01:30:01');
+    countDown(oDiv2,'2015/11/28 00:00:00');
+
+    setInterval(function () {
+        countDown(oDiv1,'2015/11/07 00:00:00')
+    },1000);
+    setInterval(function () {
+        countDown(oDiv2,'2014/10/08 00:00:00');
+    },1000);
+
+    function countDown(id,data){
+        var oDate=new Date();
+
+        var s=Math.floor((oDate-new Date(data))/1000);
+
+        var d=Math.floor(s/86400);
+
+        s%=86400;
+
+        var h=Math.floor(s/3600);
+        s%=3600;
+
+        var m=Math.floor(s/60);
+        s%=60;
+
+        var str=toDou(d)+'天'+toDou(h)+':'+toDou(m)+':'+toDou(s);
+
+        id.innerHTML=str;
+    }
+
+</script>
+</body>
+</html>
